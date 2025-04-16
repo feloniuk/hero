@@ -2,170 +2,469 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./vars.css">
-  <link rel="stylesheet" href="./style.css">
-  
-  
+  <title>Mmonster Hero Section</title>
   <style>
-   a,
-   button,
-   input,
-   select,
-   h1,
-   h2,
-   h3,
-   h4,
-   h5,
-   * {
-       box-sizing: border-box;
-       margin: 0;
-       padding: 0;
-       border: none;
-       text-decoration: none;
-       background: none;
-   
-       -webkit-font-smoothing: antialiased;
-   }
-   
-   menu, ol, ul {
-       list-style-type: none;
-       margin: 0;
-       padding: 0;
-   }
-   </style>
-  <title>Document</title>
+    /* Reset styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1a0d26 0%, #141b36 100%);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Container */
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* Trustpilot Rating */
+    .rating-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
+
+    .rating-label {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .star {
+      width: 16px;
+      height: 16px;
+      background-color: #00E7C0;
+      border-radius: 2px;
+    }
+
+    .rating-text {
+      font-size: 14px;
+    }
+
+    .rating-number {
+      font-weight: 700;
+    }
+
+    .trustpilot-logo {
+      height: 16px;
+      margin-left: 4px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Hero Heading */
+    .hero-heading {
+      text-align: center;
+      margin-bottom: 48px;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .hero-heading .highlight {
+      background: linear-gradient(92.05deg, #FF445A 0%, #FF4487 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Search Input */
+    .search-container {
+      position: relative;
+      width: 100%;
+      max-width: 630px;
+      margin-bottom: 28px;
+    }
+
+    .search-input-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #1e2030;
+      box-shadow: 0px 0px 20px 0px rgba(88, 101, 242, 0.61);
+    }
+
+    .search-inner {
+      position: relative;
+      backdrop-filter: blur(39.75px);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 10px;
+      z-index: 2;
+    }
+
+    .search-field {
+      background: rgba(66, 74, 99, 0.2);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(50.25px);
+      display: flex;
+      align-items: center;
+      padding: 6px 16px;
+      height: 56px;
+      position: relative;
+    }
+
+    .search-icon {
+      color: #FF445A;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    .search-input {
+      background: transparent;
+      border: none;
+      color: #7582b0;
+      font-size: 16px;
+      width: 100%;
+      outline: none;
+      padding: 8px 0;
+    }
+
+    .search-button {
+      position: absolute;
+      right: 1.3em;
+      bottom: 25%;
+      background: #e63959;
+      border-radius: 6px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0px 0px 2.21px 0px rgba(255, 68, 90, 0.24),
+        0px 0px 5.32px 0px rgba(255, 68, 90, 0.35),
+        0px 0px 10.02px 0px rgba(255, 68, 90, 0.44),
+        0px 0px 17.87px 0px rgba(255, 68, 90, 0.52),
+        0px 0px 33.42px 0px rgba(255, 68, 90, 0.63),
+        0px 0px 80px 0px rgba(255, 68, 90, 0.87);
+      transform: rotate(-180deg);
+      z-index: 3;
+      transition: all 0.2s ease;
+    }
+
+    .search-button:hover {
+      background: #ff4e6e;
+      transform: rotate(-180deg) scale(1.05);
+    }
+
+    .search-button svg {
+      fill: white;
+    }
+
+    /* Circle animations */
+    .circle-1, .circle-2, .circle-3 {
+      position: absolute;
+      border-radius: 50%;
+      background: #635bff;
+      z-index: 1;
+    }
+
+    .circle-1 {
+      width: 207px;
+      height: 207px;
+      left: 161px;
+      top: -191px;
+      animation: float1 15s ease-in-out infinite;
+    }
+
+    .circle-2 {
+      width: 207px;
+      height: 207px;
+      left: 615px;
+      top: -177px;
+      animation: float2 18s ease-in-out infinite;
+    }
+
+    .circle-3 {
+      width: 371px;
+      height: 371px;
+      left: 111px;
+      top: 39px;
+      animation: float3 20s ease-in-out infinite;
+    }
+
+    @keyframes float1 {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(20px) translateX(15px); }
+    }
+
+    @keyframes float2 {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(25px) translateX(-15px); }
+    }
+
+    @keyframes float3 {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      33% { transform: translateY(15px) translateX(10px); }
+      66% { transform: translateY(-15px) translateX(-10px); }
+    }
+
+    /* Suggestions */
+    .suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      max-width: 630px;
+      margin-bottom: 48px;
+    }
+
+    .suggestion {
+      background: radial-gradient(closest-side, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%), rgba(66,74,99,0.1);
+      border-radius: 40px;
+      border: 1px solid;
+      border-image: linear-gradient(180deg, rgba(51,59,85,1) 0%, rgba(36,43,68,1) 100%) 1;
+      padding: 8px 16px;
+      color: #7582b0;
+      font-size: 14px;
+      backdrop-filter: blur(2px);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .suggestion:hover {
+      color: #a3b0dd;
+      border-color: rgba(183, 189, 253, 0.3);
+    }
+
+    /* Features */
+    .features {
+      display: flex;
+      gap: 83px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature-icon-container {
+      background: radial-gradient(closest-side, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0) 100%), rgba(66,74,99,0.15);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 0px 20px 0px rgba(88,101,242,0.21);
+      backdrop-filter: blur(50.25px);
+    }
+
+    .feature-icon {
+      width: 20px;
+      height: 20px;
+      fill: #B7BDFD;
+    }
+
+    .feature-text {
+      color: #a3b0dd;
+      font-size: 14px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    /* Feature dividers */
+    .divider {
+      display: none;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .hero-heading {
+        font-size: 32px;
+      }
+
+      .features {
+        gap: 20px;
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .feature {
+        width: 45%;
+        margin-bottom: 20px;
+      }
+
+      .divider {
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: #3E496D;
+        margin: 10px 0;
+      }
+
+      .search-container {
+        max-width: 100%;
+      }
+
+      .circle-1, .circle-2, .circle-3 {
+        transform: scale(0.7);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-container {
+        padding: 15px;
+      }
+
+      .hero-heading {
+        font-size: 24px;
+      }
+
+      .rating-container {
+        margin-bottom: 30px;
+      }
+
+      .features {
+        gap: 15px;
+      }
+
+      .feature {
+        width: 45%;
+      }
+
+      .search-container {
+        margin-bottom: 20px;
+      }
+
+      .suggestions {
+        gap: 8px;
+        margin-bottom: 30px;
+      }
+
+      .suggestion {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="frame-1991426739">
-    <img class="image-2741" src="image-27410.png" />
-    <div class="frame-1991426422">
-      <img class="mask-group" src="mask-group0.svg" />
-      <div class="ellipse-9110"></div>
-      <div class="ellipse-9111"></div>
-      <div class="frame-1991426406">
-        <div class="excellent">Excellent</div>
-        <div class="frame-1991426179">
-          <img class="icons-s" src="icons-s0.svg" />
-          <img class="icons-s2" src="icons-s1.svg" />
-          <img class="icons-s3" src="icons-s2.svg" />
-          <img class="icons-s4" src="icons-s3.svg" />
-          <img class="icons-s5" src="icons-s4.svg" />
-        </div>
-        <div class="_99-63">99,63%</div>
-        <div class="positive-of-10-266-reviews-on">
-          <span>
-            <span class="positive-of-10-266-reviews-on-span">positive of</span>
-            <span class="positive-of-10-266-reviews-on-span2">10,266</span>
-            <span class="positive-of-10-266-reviews-on-span3">Reviews on</span>
-          </span>
-        </div>
-        <div class="frame-1991426413">
-          <img class="image-2725" src="image-27250.png" />
-        </div>
+  <div class="hero-container">
+    <!-- Rating -->
+    <div class="rating-container">
+      <div class="rating-label">Excellent</div>
+      <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
       </div>
-      <div class="frame-1991426804">
-        <div class="any-wish-any-game-mmonster-makes-it-real">
-          <span>
-            <span class="any-wish-any-game-mmonster-makes-it-real-span">
-              Any wish. Any game.
-              <br />
-            </span>
-            <span class="any-wish-any-game-mmonster-makes-it-real-span2">
-              Mmonster
-            </span>
-            <span class="any-wish-any-game-mmonster-makes-it-real-span3">
-              makes it real.
-            </span>
-          </span>
-        </div>
-        <div class="frame-1991426803">
-          <div class="frame-1991426814">
-            <div class="frame-1991426780">
-              <div class="_3"></div>
-              <div class="_2"></div>
-              <div class="_1"></div>
-              <div class="frame-1991426769">
-                <div class="fields">
-                  <img class="icons-m" src="icons-m0.svg" />
-                  <div class="mmonster-i-want-mythic-gear">
-                    Mmonster, I want mythic gear...
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="buttons">
-              <img class="icons-s6" src="icons-s5.svg" />
-            </div>
-          </div>
-          <div class="frame-1991426800">
-            <div class="frame-1991426798">
-              <div class="get-me-full-mythic-gear-in-wo-w">
-                Get me full Mythic gear in WoW
-              </div>
-            </div>
-            <div class="frame-1991426799">
-              <div class="boost-my-character-to-level-100-in-diablo-4">
-                Boost my character to level 100 in Diablo 4
-              </div>
-            </div>
-            <div class="frame-19914268002">
-              <div class="max-out-my-brawler-in-brawl-stars">
-                Max out my Brawler in Brawl Stars
-              </div>
-            </div>
-            <div class="frame-1991426801">
-              <div class="unlock-all-camos-in-co-d-6">
-                Unlock all camos in CoD 6
-              </div>
-            </div>
-            <div class="frame-1991426802">
-              <div class="get-me-division-1-rank-in-fc-25">
-                Get me Division 1 rank in FC 25
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mmonster">Mmonster</div>
+      <div class="rating-text">
+        <span class="rating-number">99.63%</span> positive of 
+        <span class="rating-number">10,266</span> Reviews on
       </div>
-      <div class="frame-1991426813">
-        <div class="frame-1991426806">
-          <div class="frame-1991426805">
-            <div class="icons-m2">
-              <img class="group" src="group0.svg" />
-            </div>
-          </div>
-          <div class="_24-7-service">24/7 Service</div>
-        </div>
-        <div class="frame-1991426808">
-          <div class="frame-1991426807">
-            <div class="icons-m2">
-              <img class="group2" src="group1.svg" />
-            </div>
-          </div>
-          <div class="instant-replies">Instant Replies</div>
-        </div>
-        <div class="frame-1991426810">
-          <div class="frame-1991426809">
-            <img class="icons-m3" src="icons-m3.svg" />
-          </div>
-          <div class="start-in-minutes">Start in Minutes</div>
-        </div>
-        <div class="frame-1991426812">
-          <div class="frame-1991426811">
-            <div class="icons-m2">
-              <img class="group3" src="group2.svg" />
-            </div>
-          </div>
-          <div class="secure-safe">Secure &amp; Safe</div>
-        </div>
+      <div class="trustpilot-logo">
+        <svg width="73" height="17" viewBox="0 0 73 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.2883 3.18188H16.375L11.5564 13.3932L10.2883 3.18188Z" fill="#00B67A"/>
+          <path d="M13.3193 13.3932H20.4908L18.0053 3.18188H11.5564L13.3193 13.3932Z" fill="#00B67A"/>
+          <path d="M18.0053 3.18188L20.4908 13.3932L27.0548 3.18188H18.0053Z" fill="#00B67A"/>
+          <path d="M13.3193 13.3932L11.5564 3.18188L10.2883 13.3932H13.3193Z" fill="#007F4E"/>
+          <path d="M5.72737 10.7456L6.89275 10.2353L7.47572 12.8728L5.72737 10.7456Z" fill="#00B67A"/>
+          <path d="M1.09174 3.18188H8.14126L6.37011 13.3932H0.0795898L1.09174 3.18188Z" fill="#00B67A"/>
+          <path d="M8.14127 3.18188L9.91242 13.3932H13.3194L11.5564 3.18188H8.14127Z" fill="#00B67A"/>
+          <path d="M31.0384 9.20467H33.0215V7.37766H31.0384V5.48438H33.3509V3.65737H29.0176V13.043H33.45V11.216H31.0384V9.20467Z" fill="#00B67A"/>
+          <path d="M43.2176 11.2126L41.4641 3.65742H38.8682L37.1146 11.2126L35.5296 3.65742H33.4473L35.9088 13.0431H38.7315L40.1659 6.68384L41.6002 13.0431H44.4229L46.885 3.65742H44.8026L43.2176 11.2126Z" fill="#00B67A"/>
+          <path d="M53.6485 3.65742H51.6278V13.0431H53.6485V3.65742Z" fill="#00B67A"/>
+          <path d="M59.733 3.49531C56.8349 3.49531 54.4609 5.7798 54.4609 8.34856C54.4609 10.9173 56.8349 13.2018 59.733 13.2018C62.6311 13.2018 65.0051 10.9173 65.0051 8.34856C65.0051 5.7798 62.6311 3.49531 59.733 3.49531ZM59.733 11.3378C57.9794 11.3378 56.5451 9.95584 56.5451 8.35027C56.5451 6.7447 57.9794 5.36276 59.733 5.36276C61.4865 5.36276 62.9209 6.7447 62.9209 8.35027C62.9209 9.95584 61.4865 11.3378 59.733 11.3378Z" fill="#00B67A"/>
+          <path d="M73 3.65742H70.9416L69.1882 6.48576L67.4346 3.65742H65.3762L68.0754 8.14877L65.2395 13.0414H67.2979L69.1882 9.9786L71.0784 13.0414H73.1368L70.3009 8.14877L73 3.65742Z" fill="#00B67A"/>
+        </svg>
       </div>
-      <img class="vector-4283" src="vector-42830.svg" />
-      <img class="vector-4284" src="vector-42840.svg" />
-      <img class="vector-4285" src="vector-42850.svg" />
     </div>
-  </div>
-  
-</body>
-</html>
+
+    <!-- Hero Heading -->
+    <h1 class="hero-heading">
+      Any wish. Any game.<br />
+      <span class="highlight">Mmonster</span> makes it real.
+    </h1>
+
+    <!-- Search Input -->
+    <div class="search-container">
+      <div class="search-input-container">
+        <div class="circle-1"></div>
+        <div class="circle-2"></div>
+        <div class="circle-3"></div>
+        <div class="search-inner">
+          <div class="search-field">
+            <div class="search-icon">
+              <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.29343 4.80096H4.85291C3.35071 4.80096 3.0115 4.21946 2.47846 2.59612C2.18771 2.74149 1.25732 7.03003 5.48287 7.03003V16.7701L4.94827 17.7151L8.21919 17.3758L7.63925 16.6247V8.24149L9.40797 7.22387V16.1886C9.4791 16.1264 9.52902 16.0829 9.5739 16.0438C9.77361 15.8699 9.87343 15.783 11.2978 14.5168C11.4917 14.3507 11.5159 14.0565 11.5159 13.7173V8.12034L13.2846 7.07849V14.1534C13.2846 15.0256 13.1135 16.019 12.1201 16.9882C13.7434 16.8186 15.3441 16.4067 15.3441 13.7173V7.01367C19.0656 6.72586 18.1911 2.73624 17.9108 2.59612C17.3778 4.21946 17.0386 4.80096 15.5364 4.80096H13.8037L13.8043 4.80594C13.7665 4.80255 13.7305 4.80096 13.6965 4.80096H12.8L13.2846 5.47937V5.81858C13.0966 5.92704 12.9432 6.01607 12.7965 6.10114C12.4518 6.30115 12.1449 6.47923 11.5159 6.8362C11.5159 5.88642 11.0152 5.30977 10.7648 5.21285L7.63925 7.03003V6.32739L6.76545 5.47937H7.63925L8.29343 4.80096Z" fill="#FF445A"/>
+              </svg>
+            </div>
+            <input type="text" class="search-input" placeholder="Mmonster, I want mythic gear...">
+          </div>
+          <button class="search-button">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.59961 14.3999L14.9996 7.9999L8.59961 1.5999" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M15 8L1 8" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Suggestions -->
+    <div class="suggestions">
+      <div class="suggestion">Get me full Mythic gear in WoW</div>
+      <div class="suggestion">Boost my character to level 100 in Diablo 4</div>
+      <div class="suggestion">Max out my Brawler in Brawl Stars</div>
+      <div class="suggestion">Unlock all camos in CoD 6</div>
+      <div class="suggestion">Get me Division 1 rank in FC 25</div>
+    </div>
+
+    <!-- Features -->
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon-container">
+          <svg class="feature-icon" width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.5 7.5V10.5C18.5 11.3274 17.8274 12 17 12H16.592C16.0178 15.3996 13.061 18 9.5 18C9.34087 18 9.18826 17.9368 9.07574 17.8243C8.96321 17.7117 8.9 17.5591 8.9 17.4C8.9 17.2409 8.96321 17.0883 9.07574 16.9757C9.18826 16.8632 9.34087 16.8 9.5 16.8C12.8084 16.8 15.5 14.1084 15.5 10.8V7.2C15.5 3.8916 12.8084 1.2 9.5 1.2C6.1916 1.2 3.5 3.8916 3.5 7.2V11.4C3.5 11.5591 3.43679 11.7117 3.32426 11.8243C3.21174 11.9368 3.05913 12 2.9 12H2C1.60227 11.9997 1.22093 11.8415 0.939691 11.5603C0.658455 11.2791 0.500318 10.8977 0.5 10.5V7.5C0.5 6.6726 1.1726 6 2 6H2.408C2.9828 2.6004 5.9396 0 9.5 0C13.0604 0 16.0178 2.6004 16.592 6H17C17.8274 6 18.5 6.6726 18.5 7.5ZM9.5 2.4C6.8534 2.4 4.7 4.5534 4.7 7.2V10.2C4.7 12.8466 6.8534 15 9.5 15C12.1466 15 14.3 12.8466 14.3 10.2V7.2C14.3 4.5534 12.1466 2.4 9.5 2.4Z" fill="#B7BDFD"/>
+          </svg>
+        </div>
+        <div class="feature-text">24/7 Service</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon-container">
+          <svg class="feature-icon" width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.26794 5.03595L3.77441 5.15133C3.35883 5.18345 2.9887 5.40126 2.75887 5.7489L1.03642 8.354C0.862114 8.61764 0.834404 8.94757 0.962248 9.23659C1.09013 9.52561 1.35292 9.72702 1.66521 9.7754L3.0327 9.98719C3.3526 8.28956 4.11838 6.5961 5.26794 5.03595ZM8.51515 15.4696L8.72697 16.8371C8.77535 17.1494 8.97676 17.4122 9.26575 17.5401C9.38355 17.5924 9.511 17.6194 9.63989 17.6195C9.8208 17.6194 9.99766 17.5659 10.1484 17.4659L12.7535 15.7435C13.1012 15.5136 13.319 15.1434 13.351 14.7279L13.4664 13.2344C11.9062 14.384 10.2128 15.1498 8.51515 15.4696ZM8.00085 14.5218C8.04832 14.5218 8.09606 14.5179 8.14371 14.5099C8.85495 14.391 9.54046 14.1907 10.1944 13.9285L4.5739 8.30798C4.31168 8.96188 4.11135 9.64739 3.99243 10.3587C3.94556 10.639 4.0396 10.9247 4.24057 11.1257L7.37671 14.2618C7.54358 14.4286 7.76879 14.5218 8.00085 14.5218ZM16.7473 8.02363C18.1227 5.3646 18.1736 2.55465 18.1017 1.23682C18.0771 0.785273 17.7171 0.425276 17.2655 0.400663C17.0139 0.387092 16.762 0.380366 16.51 0.380495C15.0364 0.380495 12.7047 0.603692 10.4787 1.7551C8.70963 2.67014 6.38988 4.68497 5.02127 7.33283C5.03744 7.34546 5.05323 7.35886 5.06811 7.37374L11.1287 13.4343C11.1435 13.4492 11.1569 13.4649 11.1695 13.4811C13.8174 12.1125 15.8322 9.79271 16.7473 8.02363ZM10.9062 4.02491C11.8908 3.04037 13.4928 3.04027 14.4774 4.02491C14.9544 4.50184 15.2171 5.13601 15.2171 5.81052C15.2171 6.48503 14.9544 7.1192 14.4774 7.59613C13.9852 8.08835 13.3384 8.33451 12.6919 8.33457C12.0451 8.33461 11.3986 8.08848 10.9062 7.59613C10.4293 7.1192 10.1666 6.48503 10.1666 5.81052C10.1666 5.13601 10.4293 4.50184 10.9062 4.02491Z" fill="#B7BDFD"/>
+            <path d="M11.6205 6.88186C12.2112 7.4726 13.1725 7.47263 13.7632 6.88186C14.0494 6.59567 14.207 6.2152 14.207 5.81049C14.207 5.40578 14.0494 5.02531 13.7632 4.73915C13.4679 4.44376 13.0799 4.29609 12.6918 4.29609C12.3039 4.29609 11.9159 4.44376 11.6205 4.73915C11.3344 5.02531 11.1767 5.40578 11.1767 5.81049C11.1767 6.2152 11.3343 6.5957 11.6205 6.88186ZM1.39813 14.5871C1.52739 14.5871 1.65665 14.5378 1.75523 14.4391L3.40414 12.7902C3.60138 12.593 3.60138 12.2732 3.40414 12.076C3.20694 11.8787 2.88714 11.8787 2.68991 12.076L1.041 13.7249C0.84376 13.9221 0.84376 14.2419 1.041 14.4391C1.08784 14.4861 1.14351 14.5233 1.2048 14.5487C1.26609 14.5741 1.33179 14.5871 1.39813 14.5871ZM4.91528 13.5871C4.71807 13.3899 4.39828 13.3899 4.20104 13.5871L1.03086 16.7573C0.833625 16.9545 0.833625 17.2743 1.03086 17.4715C1.12948 17.5701 1.25874 17.6194 1.388 17.6194C1.51726 17.6194 1.64651 17.5701 1.7451 17.4715L4.91524 14.3013C5.11251 14.1041 5.11251 13.7843 4.91528 13.5871ZM5.71214 15.0982L4.06326 16.7471C3.86603 16.9444 3.86603 17.2641 4.06326 17.4614C4.16188 17.56 4.29114 17.6093 4.42036 17.6093C4.54959 17.6093 4.67888 17.56 4.77747 17.4614L6.42638 15.8125C6.62361 15.6152 6.62361 15.2955 6.42638 15.0982C6.22917 14.901 5.90938 14.901 5.71214 15.0982Z" fill="#B7BDFD"/>
+          </svg>
+        </div>
+        <div class="feature-text">Instant Replies</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon-container">
+          <svg class="feature-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.5 1.66667C7.5 1.20643 7.8731 0.833332 8.33333 0.833332H11.6667C12.1269 0.833332 12.5 1.20643 12.5 1.66667C12.5 2.1269 12.1269 2.5 11.6667 2.5H8.33333C7.8731 2.5 7.5 2.1269 7.5 1.66667Z" fill="#B7BDFD"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 11.6667C2.5 7.52453 5.85786 4.16667 10 4.16667C14.1421 4.16667 17.5 7.52453 17.5 11.6667C17.5 15.8088 14.1421 19.1667 10 19.1667C5.85786 19.1667 2.5 15.8088 2.5 11.6667ZM13.9226 8.92259C14.248 8.59715 14.248 8.06951 13.9226 7.74408C13.5972 7.41864 13.0695 7.41864 12.7441 7.74408L9.41074 11.0774C9.08531 11.4028 9.08531 11.9305 9.41074 12.2559C9.73618 12.5814 10.2638 12.5814 10.5893 12.2559L13.9226 8.92259Z" fill="#B7BDFD"/>
+          </svg>
